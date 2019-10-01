@@ -1,0 +1,79 @@
+Milush Yanev
+06/03/2018
+CIS 18C 42347
+Paul Conrad
+
+
+In this project we were suppose to use Priority Queue and implement five different functions.
+Functions that we were suppose were called Insert, Remove_max, Decrease, Increase, Display.
+Function Insert has to able to insert specific elements with a specific priority number attached to them.
+Function Remove_max has to able to remove the maximum element from current Queue.
+Function Decrease has to be able to decrease item's priority by a set up priority decrease number.
+Function Increase has to be able to increase item's priority by a set up priority increase number.
+Function Display has to be able to display current Queue in a specific order, in our case from high to low.
+
+For the project i have used 2 classes.
+
+JUnit_Test.java is where we test the current implementations. It is a simple test class that calls functions 
+from my second class. In the class i have created printout lines explaining what exactly are we going to get
+when functions are called. In the beginning we will declare 20 random varibales from 1 to 20. By random i mean,
+i will add them randomnly in the Queue by using insert function. I also test other functions such as decrease,
+remove_max and increase priority's element. As stated in the word file provided by our professor, for extra points,
+i have called every function 5 times, with different inputs and displayed sorted queue afterwards. To test functionallity
+the user can switch priority's values if needed to perform additional checks for correct code implementations.
+
+MilushYanevPriorityQueue.java is the class where the fun part is. In this particular class i have created the backbone of
+my code. 
+
+The first step in this file is to create a current LinkedList to operate with values in PriorityQueue, followed 
+by a constructor (MilushYanevPriorityQueue()). I then created the current Object class that will determine what we will
+pass -> QueueObject that has a String and integer -> String element; int priority; Later on i have set up this function that
+will pass the values from the Object class ->QueueObject(String o, int p) that holds this.priority=p; this.element=o; .
+To pass readable input we must convert memory into string using -> public String toString(), where we will return
+current priority and element -> return priority + " "+ element; .
+ 
+Next step is to create current five functions and set up functionality.
+Insert is a simple void function that holds two parameters - a string for the name of the Priority Queue that we will add
+and an integer that will hold current priority -> void insert(String insert, int priority). Inside we call the Object class,
+that i had named test and create a dynamic class -> QueueObject test=new QueueObject(insert,priority). Then we follow
+with the function that will add a current element ->list.add(test); followed by Sorting algorith to sort Queue in order
+max to min -> BubleSort().
+
+Next step is to create a function that will remove max priority element from current Queue ->void remove_max() . Since we are
+asked to sort PriorityQueue in order max to min, we are lucky because .remove() will remove the top of the element (first)
+and in our case this is the max value -> list.remove();. If we needed to sort from low to high we would be using same method but with changes
+that will remove item from back instead of front. I finish with calling sorting function -> BubbleSort();
+
+Next step is to create a function that will decrease the priority of a current element with specific number (priority = priority - priorityChange).
+We have to check if the list is empty, eventhough i know that it is not, it is convinient to check -> if (list.isEmpty()), {return;}. 
+We have to check if element is there by using a simple for loop that loops until current size ->for(int i=0;i<list.size();i++) , and if
+selected element is there ->if(list.get(i).element.equals(element)), change priority -> temp.priority-= priorityChange; and 
+put an end -> break; We have to finish with sorting algorithm, to properly sort from high to low -> BubleSort();
+
+Next step is to create a function that will increase the priority of a current element with specific number (priority = priority+priorityChange).
+Luckily for me it is the same as decrease function with little changes. After spending quite a few time on the decrease function, this one
+was very fast fast because it was basically copy/paste and the current changes.
+We have to check if the list is empty, eventhough i know that it is not, it is convinient to check -> if (list.isEmpty()), {return;}. 
+We have to check if element is there by using a simple for loop that loops until current size ->for(int i=0;i<list.size();i++) , and if
+selected element is there ->if(list.get(i).element.equals(element)), change priority -> temp.priority+= priorityChange; and 
+put an end -> break; We have to finish with sorting algorithm, to properly sort from high to low -> BubleSort();
+
+Important step for this class was to figure it our how to sort the elements. I have tried several algorithms and they all worked but i choose
+bubleSort(), because it is probably the fastest out there and it is easy to understand - it is fairly short and straight up forward.
+First step of the sorting is to create a proper swapping functions, that will swap elements (1 to place of 2, and 2 to place of one).
+I declared the function as ->void swapValues(int indexOne, int indexTwo).To properly do it, in our case, we have to delete the second index
+and properly insert the elements in order - first index, delete the second one.Swapping is done by ->QueueObject temp=list.get(indexOne); 
+QueueObject temp2=list.remove(indexTwo); list.add(indexOne,temp2);Then i have declared the BubleSort ->void bubleSort(). 
+Inside you have to loop twice between elements, where the second loop will determine how to sort, low to high or high to low. 
+-> for(int i=list.size()-1;i>=1;i--), for (int j=0;j<i;j++) . Then we have to call if function to get the value and call swap to actually 
+swap them in current order ->if(list.get(j).priority<list.get(j+1).priority),swapValues(j,j+1);. If we wanted to sort in oposite order we
+would just change the "<" to ">" in the if statement.
+
+Finally we have to create a fucntion that will display most current list -> void display(). Inside we have only a statement that will
+print out a line with current items, converted into readable values -> System.out.println(list.toString());
+
+
+To finish this project i was using references from google when it comes to implementation java classes and how to properly traverse
+between items. Also i shared ideas and got ideas from a classmate - Kremena Yanev. We helped each other to finish this project - the
+end result is from both of our work - code looks pretty, it is efficient and there is no extra implementations than the needed one.
+Unfortunatelly due to Java inexperience we needed close to 10 days, 3-4 hours per day to finish it and to make it look the way it looks.
